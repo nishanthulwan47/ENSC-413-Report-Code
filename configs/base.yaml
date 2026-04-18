@@ -1,0 +1,32 @@
+seed: 42
+output_dir: outputs
+
+dataset:
+  data_root: data/raw
+  csv_name: training_solutions_rev1.csv
+  train_dir_name: images_training_rev1
+  image_size: 224
+  num_workers: 4
+  batch_size: 32
+  val_ratio: 0.1
+  test_ratio: 0.1
+  threshold: 0.5
+  classes:
+    - smooth
+    - features_or_disk
+    - star_or_artifact
+    - merger
+
+model:
+  name: vit_base_patch16_224
+  pretrained: true
+  dropout: 0.1
+  num_classes: 4
+
+train:
+  epochs: 10
+  lr: 0.0001
+  weight_decay: 0.0001
+  amp: true
+  gradient_clip_norm: 1.0
+  early_stopping_patience: 4
